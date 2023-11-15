@@ -51,7 +51,7 @@ function playRound(playerSelection, computerSelection){
 function game(){
 
     for(let i=0;i<gameTime+gamesDrawn ;i++){
-        let playerSelection = prompt("Pick you Weapon");
+        let playerSelection = prompt("Pick your Weapon");
         playRound(playerSelection, getComputerChoice().toLowerCase());
         if(wins == neededWins)
         {
