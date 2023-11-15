@@ -64,7 +64,7 @@ function game(){
             break;
         }
         else {
-            console.log("The game goes on its now  " + wins + "-" + losses + "for you." );
+            console.log("The game goes on its now  " + wins + "-" + losses + " for you." );
         }
     }
 
