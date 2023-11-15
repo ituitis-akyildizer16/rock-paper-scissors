@@ -9,6 +9,7 @@ function getComputerChoice(){
 function playRound(playerSelection, computerSelection){
     if(playerSelection == computerSelection){
         console.log("Its a Draw");
+        gamesDrawn++;
     }
     else if(playerSelection == "rock"){
         if(computerSelection == "paper"){
@@ -49,18 +50,18 @@ function playRound(playerSelection, computerSelection){
 
 function game(){
 
-    for(let i=0;i<10 || gameWon || gameLost ;i++){
+    for(let i=0;i<gameTime+gamesDrawn ;i++){
         let playerSelection = prompt("Pick you Weapon");
         playRound(playerSelection, getComputerChoice().toLowerCase());
-        if(wins==3)
+        if(wins == neededWins)
         {
             console.log("Congratulations you won " + wins + "-" + losses);
-            let gameWon = 1;
+            gameEnd = 1;
             break;
         }
-        else if(losses==3){
+        else if(losses == neededWins){
             console.log("Shucks you lost " + losses + "-" + wins );
-            let gameLost = 1;
+            gameEnd = 1;
             break;
         }
         else {
@@ -69,8 +70,21 @@ function game(){
     }
 
 }
+let neededWins = 3;
+let gamesDrawn = 0;
+let gameSetting = prompt("Please set game end condition input 1 for total games input 2 for won games needed.")
+let gameTime;
+if(gameSetting-1){
+    neededWins = +prompt("Set number of wins needed");
+    gameTime = neededWins*2;
+}
+else{
+    gameTime = +prompt("Set number of total games. Draws are excluded.");
+    neededWins = undefined;
+}
 let losses = 0;
 let wins = 0;
+let gameEnd = 0;
 game();
 
 
